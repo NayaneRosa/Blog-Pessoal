@@ -4,13 +4,13 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
 import com.generation.blogpessoal.model.Postagem;
 
-// JPA = Interface que contém os métodos de manipulação do BD
-// PostagemRepository = Interface que herda os métodos da JPA
+@Repository
 public interface PostagemRepository extends JpaRepository<Postagem, Long> {
 	
-	List<Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo") String titulo);
-	
+	 List<Postagem> findAllByTituloContainingIgnoreCase(@Param("titulo") String titulo);
+
 }
