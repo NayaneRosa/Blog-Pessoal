@@ -28,7 +28,6 @@ public class BasicSecurityConfig {
 
     @Bean
     UserDetailsService userDetailsService() {
-
         return new UserDetailsServiceImpl();
     }
 
@@ -37,7 +36,7 @@ public class BasicSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
+    @Bean	// Define quais parametros serão utilizados para fazer a autenticação(login)
     AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
         authenticationProvider.setUserDetailsService(userDetailsService());
@@ -45,7 +44,7 @@ public class BasicSecurityConfig {
         return authenticationProvider;
     }
 
-    @Bean
+    @Bean	// Implementa e executa o processo de autenticação(login) 
     AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
             throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
